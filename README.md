@@ -1,6 +1,11 @@
 # LaMoSca - LAboratorio di MOtori per SCAcchi
 
+[![Website](https://img.shields.io/badge/Sito%20Web-valocchi.it%2Flamosca-blue)](https://www.valocchi.it/lamosca/)
+
 **LaMoSca** è un motore scacchistico didattico originariamente sviluppato nel 2001-2002 da **Pietro Valocchi**, ispirato a progetti storici come *TSCP* (Tom Kerrigan's Simple Chess Program).
+
+🌐 **Sito web ufficiale e guida didattica completa:**  
+👉 **[https://www.valocchi.it/lamosca/](https://www.valocchi.it/lamosca/)**
 
 L'obiettivo originario del progetto era mostrare in modo incrementale e trasparente (da v0.01 a v0.10) come costruire un motore per scacchi funzionante: rappresentazione della scacchiera, generazione mosse pseudolegali, protocollo di comunicazione (WinBoard/XBoard), valutazione statica (PST) e algoritmi di ricerca dell'albero delle mosse (Minimax, Negamax, Alpha-Beta, ordinamento mosse e ricerca di quiescenza).
 
