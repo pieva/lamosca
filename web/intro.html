@@ -1,0 +1,231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>La struttura di un programma per scacchi</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="La Struttura di un programma per scacchi.">
+    <meta name="keywords" content="scacchi, programmi, download, freeware, algoritmi, chess, programming, WinBoard, engine">
+    <meta name="ProgId" content="FrontPage.Editor.Document">
+    <meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+    <meta name="robots" content="index,follow">
+    <style type="text/css">
+        <!--
+        body {
+            color: #000000;
+            background-color: #ffffff;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px
+        }
+
+        p {
+            font-family: Arial, sans-serif
+        }
+
+        h1 {
+            font-family: Verdana, sans-serif
+        }
+
+        h2 {
+            font-family: Verdana, sans-serif
+        }
+
+        h3 {
+            font-family: Verdana, sans-serif
+        }
+
+        a {
+            font-family: Arial, sans-serif;
+            color: #000080
+        }
+
+        ul {
+            font-family: Arial, sans-serif;
+            list-style-type: square
+        }
+
+        hr {
+            color: #000000;
+            background-color: #ffffff
+        }
+
+        .titolo {
+            color: #FFFFFF;
+            background-color: #000000
+        }
+
+        .listato {
+            font-family: Courier, monospace;
+            font-size: 10pt
+        }
+
+        .pulsante {
+            font-family: Verdana, sans-serif;
+            font-size: 14pt;
+            text-decoration: none;
+            color: #000000;
+            background-color: #ffffff;
+            font-weight: bold
+        }
+        -->
+    </style>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MPWL86');</script>
+    <!-- End Google Tag Manager -->
+
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6683583463955171"></script></head>
+
+<body>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MPWL86"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <table border="0" cellpadding="0" width="100%" cellspacing="0">
+        <tr>
+            <td bgcolor="#000000" width="120"><a href="index.html"><img border="0" src="lamosca.jpg" alt="Indice" width="120" height="120"></a></td>
+            <td bgcolor="#000000">
+                <h1 class="titolo">LaMoSca</h1>
+                <h2 class="titolo">Introduzione</h2>
+            </td>
+        </tr>
+    </table>
+    <table border="0" cellpadding="8" width="100%">
+        <tr>
+            <td>
+                <center>
+                    <!-- <a href="http://tracker.tradedoubler.com/click?p=4366&amp;a=853110&amp;g=28872" target="_blank"><img src="http://impit.tradedoubler.com/imp/img/28872/853110" border="0" width="468" height="60"></a>-->
+                    <ins class="adsbygoogle" data-ad-client="ca-pub-6683583463955171" data-ad-slot="2544974048" style="display:block;width:100%;max-width:970px;height:90px;margin:0 auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                </center>
+                <h2>Struttura di un programma per scacchi</h2>
+                <p>
+                    <img src="fischer.gif" align="right" hspace="0" alt="Programma" width="217" height="280">Le
+                    funzioni che debbono essere svolte da un <b>programma</b> di <b>scacchi</b>
+                    possono essere ricondotte a tre grandi categorie:
+                </p>
+                <ul>
+                    <li>
+                        l'individuazione delle mosse possibili per una determinata
+                        posizione;
+                    </li>
+                    <li>la valutazione delle posizioni ottenute con ciascuna mossa;</li>
+                    <li>
+                        la scelta della sequenza di mosse ottimale tra tutte quelle
+                        possibili.
+                    </li>
+                </ul>
+                <p>
+                    Mentre la prima funzionalità è abbastanza semplice da realizzare, le
+                    altre due sono, per motivi differenti, decisamente più complesse da
+                    svolgere con un <b>computer</b>.
+                </p>
+                <p>
+                    La difficoltà della corretta valutazione di una certa posizione di <b>gioco</b>
+                    sulla <b>scacchiera</b> è sperimentata da chiunque voglia iniziare a
+                    giocare a scacchi ad un livello appena più evoluto rispetto a chi gioca
+                    senza una strategia a lungo termine.
+                </p>
+                <p>
+                    La scelta della sequenza ottimale è un compito solo apparentemente
+                    semplice. Teoricamente sarebbe sufficiente generare tramite <b>software</b>
+                    tutte le mosse possibili dall'apertura alla fine della partita. Contando
+                    il numero delle opzioni che è necessario studiare secondo questa
+                    impostazione, ci si rende conto della complessità dell'impresa.
+                    L'apertura, ad esempio, prevede 20 differenti scelte possibili.
+                    Considerando che per ciascuna di queste, l'avversario può generare altre
+                    venti risposte, solo al primo livello si ha un totale di 20^2 = 400
+                    alternative.
+                </p>
+                <p>
+                    Considerando una media di alternative per ogni livello di gioco pari a
+                    35 per ciascun giocatore e che una partita di scacchi conta circa 40
+                    livelli, si ha un numero complessivo di nodi da analizzare pari a
+                    35^(2*40) = 3.35 e+123, che rende impraticabile la ricerca completa delle
+                    varianti.
+                </p>
+                <p>
+                    L'insieme di tutte le varianti possibili dalla posizione iniziale della
+                    scacchiera, però, forma un albero di mosse nel quale la definizione della
+                    sequenza migliore rappresenta un percorso ottimo, problema ben noto in <b>informatica</b>.
+                </p>
+                <p>
+                    La ricerca del percorso ottimo all'interno dell'albero generato dal
+                    software è l'elemento caratteristico degli attuali programmi di scacchi.
+                    Il miglioramento dell'efficienza del software in questa ricerca, con il
+                    conseguente aumento della profondità di analisi raggiungibile dal
+                    computer, rappresenta il modo per superare i limiti nella capacità di
+                    valutare la qualità del gioco da parte della macchina.
+                </p>
+                <p>
+                    Per quanto riguarda le strutture dati utilizzate dal software, in linea
+                    di principio sono necessarie solo poche informazioni, quali:
+                </p>
+                <ul>
+                    <li>la posizione dei pezzi sulla scacchiera;</li>
+                    <li>il lato che deve muovere;</li>
+                    <li>la lista delle mosse da valutare;</li>
+                    <li>la possibilità di arrocco per ciascun lato;</li>
+                    <li>
+                        una memoria delle scelte fatte dal computer, per valutare la
+                        correttezza di catture &quot;en-passant&quot;, le patte per
+                        ripetizione e per il superamento del limite delle 50 mosse
+                        dall'ultima cattura o avanzamento di pedone (oltre che, eventualmente,
+                        per permettere al programma di tornare indietro nel gioco).
+                    </li>
+                </ul>
+                <p>
+                    Ciascun particolare <b>algoritmo</b> introdotto nel programma di
+                    scacchi, poi, richiederà sue specifiche strutture dati.
+                </p>
+            </td>
+        </tr>
+    </table>
+    <table border="0" cellpadding="10" width="100%" cellspacing="0">
+        <tr>
+            <td valign="top" width="50%">
+                <h2>Riferimenti</h2>
+                <p>
+                    Paolo Ciancarini:<br>
+                    &quot;I Giocatori Artificiali&quot;;<br>
+                    Mursia, 1992 - 252 pag.<br>
+                    ISBN 88-425-1319-9
+                </p>
+            </td>
+            <td bgcolor="#C0C0C0" valign="top" width="50%">
+                <h2>Link</h2>
+                <ul>
+                    <li><a href="http://www.pi.infn.it/~carosi/chess/shannon.txt">Programming a Computer for Playing Chess</a></li>
+                    <li><a href="http://www.gamedev.net/page/resources/_/technical/artificial-intelligence/chess-programming-part-i-getting-started-r1014">Chess Programming</a></li>
+                    <!-- <li><a href="http://www.galahadnet.com/chess/chessprg/">How To Create A Digital Grandmaster: Chess Programming From the Ground Up</a></li> -->
+                    <li><a href="https://web.archive.org/web/20060908000000*/http://www.ics.uci.edu/~eppstein/180a/">Game Programming</a></li>
+                    <li><a href="http://www.fierz.ch/strategy.htm">Strategy Game Programming</a></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <table border="0" cellpadding="10" cellspacing="0" width="100%">
+        <tr>
+            <td width="33%"><a href="ambiente.html" class="pulsante">Indietro</a></td>
+            <td align="center" width="34%"><a href="index.html" class="pulsante">Indice</a></td>
+            <td align="right" width="33%"><a href="scacchiera.html" class="pulsante">Avanti</a></td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
