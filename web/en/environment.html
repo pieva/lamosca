@@ -1,0 +1,276 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="Modern development environment setup for LaMoSca: 64-bit C compilation and interfacing with Arena Chess GUI">
+    <meta name="keywords" content="LaMoSca, chess, chess engine, Arena Chess, WinBoard, GUI, compilation, C, Visual Studio, MSVC, x64, GitHub">
+    <meta name="ProgId" content="FrontPage.Editor.Document">
+    <meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+    <title>LaMoSca: Development Environment and Arena GUI</title>
+    <style type="text/css">
+        <!--
+        h1 {
+            font-family: Verdana, sans-serif
+        }
+
+        h2 {
+            font-family: Verdana, sans-serif
+        }
+
+        h3 {
+            font-family: Verdana, sans-serif
+        }
+
+        a {
+            color: #000080
+        }
+
+        ul {
+            list-style-type: square
+        }
+
+        hr {
+            color: #000000;
+            background-color: #ffffff
+        }
+
+        .titolo {
+            color: #FFFFFF;
+            background-color: #000000
+        }
+
+        .listato {
+            font-family: Consolas, "Courier New", Courier, monospace;
+            font-size: 10pt;
+            background-color: #f4f4f4;
+            padding: 8px;
+            border: 1px solid #cccccc;
+        }
+
+        .box-info {
+            background-color: #f0f7ff;
+            border-left: 4px solid #0056b3;
+            padding: 10px 15px;
+            margin: 15px 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .pulsante {
+            font-family: Verdana, sans-serif;
+            font-size: 14pt;
+            text-decoration: none;
+            color: #000000;
+            background-color: #ffffff;
+            font-weight: bold
+        }
+
+        .img-screenshot {
+            border: 1px solid #777777;
+            box-shadow: 2px 2px 6px #cccccc;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            max-width: 520px;
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        body {
+            color: #000000;
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin-left: 0pt;
+            margin-right: 0pt;
+            margin-top: 0pt
+        }
+        -->
+    </style>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MPWL86');</script>
+    <!-- End Google Tag Manager -->
+
+    <script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6683583463955171"></script>
+</head>
+
+<body>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MPWL86"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Header -->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td width="120" bgcolor="#000000"><a href="../welcome.html"><img src="../lamosca.jpg" border="0" alt="Index" width="120" height="120"></a></td>
+            <td bgcolor="#000000">
+                <h1 class="titolo">LaMoSca</h1>
+                <h2 class="titolo">Modern Development Environment and GUI Interface</h2>
+            </td>
+            <td bgcolor="#000000" align="right" valign="top" style="padding: 10px;">
+                <a href="../ambiente.html" class="pulsante" style="color:#ffffff;background-color:#000000;font-size:11pt;">Versione italiana</a>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Main Content -->
+    <table border="0" cellpadding="10" cellspacing="0" width="100%">
+        <tr>
+            <td>
+                <center>
+                    <ins class="adsbygoogle" data-ad-client="ca-pub-6683583463955171" data-ad-slot="2544974048" style="display:block;width:100%;max-width:970px;height:90px;margin:0 auto"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                </center>
+
+                <h2>Project Relaunch (2026+)</h2>
+                <p>
+                    More than twenty years after the original educational versions (2001-2002), <b>LaMoSca</b>
+                    has been revived and integrated into the modern computer chess ecosystem.
+                </p>
+                <div class="box-info">
+                    <b>Official GitHub Repository:</b><br>
+                    All source code, documentation, and build scripts are publicly hosted on GitHub:<br>
+                    <a href="https://github.com/pieva/lamosca" target="_blank"><b>https://github.com/pieva/lamosca</b></a>
+                </div>
+
+                <hr>
+
+                <h2>1. Local 64-bit Compilation</h2>
+                <p>
+                    The original C source files (version 0.10) have been adapted for standard 64-bit builds,
+                    and an automated build script has been created for the <b>Microsoft Visual C++ (MSVC)</b> toolchain.
+                </p>
+                <p>
+                    To compile the engine directly from source code, simply run from Command Prompt or PowerShell:
+                </p>
+                <pre class="listato">
+build.bat
+                </pre>
+                <p>
+                    The script automatically detects the Visual Studio installation (e.g. Visual Studio Community) via <code>vswhere</code>,
+                    configures the 64-bit environment (<code>vcvars64.bat</code>), and generates the optimized native binary:
+                </p>
+                <pre class="listato">
+bin\LaMoSca.exe (Native x64 executable, ~45 KB)
+                </pre>
+
+                <hr>
+
+                <h2>2. Interfacing LaMoSca with a GUI: Arena Chess</h2>
+                <p>
+                    Since version 0.10 implements the standard <b>WinBoard / XBoard</b> protocol,
+                    it can be played immediately on a modern graphical board using the free <b>Arena Chess GUI</b>.
+                </p>
+
+                <h3>Step 1: Download Arena Chess</h3>
+                <p>
+                    From the official website <a href="http://www.playwitharena.de/" target="_blank">playwitharena.de</a>,
+                    download the portable (no-install) archive <b>Arena 3.5.1 ZIP</b> (17 MB).
+                    Simply extract the ZIP into any directory of your choice and launch <code>Arena.exe</code>.
+                </p>
+
+                <h3>Step 2: Launching Arena Chess</h3>
+                <p>
+                    When opened, Arena displays the primary chessboard alongside the engine analysis and clock panels:
+                </p>
+                <p>
+                    <img src="../img/arena_main.png" alt="Arena Chess Main Interface" class="img-screenshot">
+                </p>
+
+                <h3>Step 3: Registering the LaMoSca Engine</h3>
+                <p>
+                    To add LaMoSca to Arena's installed engines list:
+                </p>
+                <ol>
+                    <li>In the main menu, navigate to <b>Engines</b> &rarr; <b>Manage...</b> (or press <b>F11</b>).</li>
+                    <li>Switch to the <b>Details</b> tab and click <b>New</b>.</li>
+                    <li>Select the executable file: <code>...\lamosca\bin\LaMoSca.exe</code>.</li>
+                    <li>In the <b>Type</b> drop-down menu, set the protocol to <b>Winboard</b>.</li>
+                    <li>The <i>Name</i> ("LaMoSca") and <i>Author</i> ("Pietro Valocchi") fields are recognized automatically.</li>
+                    <li>Click <b>Apply</b> and then <b>OK</b>.</li>
+                </ol>
+                <p>
+                    <img src="../img/arena_lamosca_engine.png" alt="LaMoSca Engine Setup in Arena" class="img-screenshot">
+                </p>
+
+                <p>
+                    LaMoSca is now installed and ready to play games on Arena!
+                </p>
+
+                <h3>Step 4: Starting the First Game</h3>
+                <p>
+                    To watch LaMoSca think and calculate moves on the graphical board:
+                </p>
+                <ol>
+                    <li>In the main menu, select <b>Game</b> &rarr; <b>New Game</b> to set up the starting position.</li>
+                    <li>
+                        <b>To play as White:</b> simply make your opening move on the board by dragging a piece with the mouse (for instance, moving the pawn to <code>e4</code> or <code>d4</code>).
+                        As soon as you release the piece, LaMoSca (controlling Black) analyzes the position and responds automatically!
+                    </li>
+                    <li>
+                        <b>To have LaMoSca play as White:</b> select from the menu <b>Engines</b> &rarr; <b>Move Now!</b> (or click the green arrow icon on the toolbar).
+                        The engine computes its opening variant, makes its first move as White, and waits for your response.
+                    </li>
+                    <li>
+                        <b>Real-time search analysis:</b> while the engine is calculating, the bottom analysis window in Arena shows the current search depth (<i>ply</i>), total nodes evaluated, and the anticipated continuation (<i>Principal Variation</i>).
+                    </li>
+                </ol>
+
+                <hr>
+
+                <h2>3. Development Roadmap Ahead</h2>
+                <p>
+                    With the 64-bit build system verified and WinBoard integration working smoothly in Arena,
+                    the next development milestones include:
+                </p>
+                <ul>
+                    <li><b>UCI Protocol Support:</b> full compliance with the modern Universal Chess Interface (compatible with CuteChess, En-Croissant, Lichess bots).</li>
+                    <li><b>Complete Ruleset & Perft Validation:</b> full castling rights, <i>en passant</i> captures, and underpromotions.</li>
+                    <li><b>Transposition Table & Zobrist Hashing:</b> caching previously analyzed game states to dramatically prune redundant subtree exploration.</li>
+                    <li><b>Time Management:</b> dynamically allocating search time based on remaining clock and increments.</li>
+                </ul>
+
+            </td>
+        </tr>
+    </table>
+
+    <!-- Contacts -->
+    <table border="0" cellpadding="10" cellspacing="0" width="100%">
+        <tr>
+            <td>
+                <h2>Contacts</h2>
+                <p>
+                    For feedback, questions, or to follow ongoing development,
+                    visit the <a href="https://github.com/pieva/lamosca" target="_blank">GitHub repository</a> or
+                    contact the author via <a href="mailto:pietro_valocchi@yahoo.it">e-mail</a>.
+                </p>
+                <p><big><b>Have fun playing with LaMoSca!</b></big></p>
+            </td>
+            <td width="120"><img src="../moscabianca.jpg" alt="LaMoSca" width="120" height="120"></td>
+        </tr>
+    </table>
+
+    <!-- Navigation Buttons -->
+    <hr>
+    <table border="0" cellpadding="10" cellspacing="0" width="100%">
+        <tr>
+            <td width="33%"><a href="quiescence.html" class="pulsante">Back</a></td>
+            <td align="center" width="34%"><a href="../welcome.html" class="pulsante">Index</a></td>
+            <td align="right" width="33%"><a href="tobecontunued.html" class="pulsante">Next</a></td>
+        </tr>
+    </table>
+
+</body>
+
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="L'Effetto Quiescenza">
+    <meta name="keywords" content="scacchi, programmi, download, freeware, algoritmi, chess, programming, WinBoard, engine, ordinamento, ricerca, alberi, quiescenza, quiescence">
+    <meta name="ProgId" content="FrontPage.Editor.Document">
+    <meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+    <title>LaMoSca: Quiescenza</title>
+    <style type="text/css">
+        <!--
+        body {
+            color: #000000;
+            background-color: #ffffff;
+            position: absolute;
+            left: 0;
+            top: 0;
+            margin: 0
+        }
+
+        p {
+            font-family: Arial, sans-serif
+        }
+
+        h1 {
+            font-family: Verdana, sans-serif
+        }
+
+        h2 {
+            font-family: Verdana, sans-serif
+        }
+
+        h3 {
+            font-family: Verdana, sans-serif
+        }
+
+        a {
+            font-family: Arial, sans-serif;
+            color: #000080
+        }
+
+        ul {
+            font-family: Arial, sans-serif;
+            list-style-type: square
+        }
+
+        hr {
+            color: #000000;
+            background-color: #ffffff
+        }
+
+        .titolo {
+            color: #FFFFFF;
+            background-color: #000000
+        }
+
+        .citazione {
+            font-size: 18pt;
+            text-align: right;
+            font-style: italic
+        }
+
+        .listato {
+            font-family: Courier, monospace;
+            font-size: 10pt
+        }
+
+        .pulsante {
+            font-family: Verdana, sans-serif;
+            font-size: 14pt;
+            text-decoration: none;
+            color: #000000;
+            background-color: #ffffff;
+            font-weight: bold
+        }
+        -->
+    </style>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MPWL86');</script>
+    <!-- End Google Tag Manager -->
+
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6683583463955171"></script></head>
+
+<body>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MPWL86"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td width="120" bgcolor="#000000"><a href="index.html"><img src="lamosca.jpg" border="0" alt="Home" width="120" height="120"></a></td>
+            <td bgcolor="#000000">
+                <h1 class="titolo">LaMoSca v0.10</h1>
+                <h2 class="titolo">Quiescenza</h2>
+            </td>
+        </tr>
+    </table>
+    <table border="0" cellpadding="10" cellspacing="0" width="100%">
+        <tr>
+            <td>
+                <center>
+                    <!-- <a href="http://tracker.tradedoubler.com/click?p=4366&amp;a=853110&amp;g=28872" target="_blank"><img src="http://impit.tradedoubler.com/imp/img/28872/853110" border="0" width="468" height="60"></a>-->
+                    <ins class="adsbygoogle" data-ad-client="ca-pub-6683583463955171" data-ad-slot="2544974048" style="display:block;width:100%;max-width:970px;height:90px;margin:0 auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                </center>
+                <h2>Obiettivo</h2>
+                <p>
+                    In questa versione del programma la profondità di ricerca nell'albero
+                    delle mosse è resa variabile, per fermare l'analisi in posizioni di gioco
+                    stabile eliminando l'effetto orizzonte.
+                </p>
+                <h2>Il codice</h2>
+                <p>
+                    La ricerca della variante ottima nell'albero delle mosse con una
+                    profondità fissa di ricerca espone all'&quot;effetto orizzonte&quot;.
+                    Questo deriva da una valutazione sbagliata di una posizione per non aver
+                    considerato mosse immediatamente successive a quelle prese in esame.
+                    Questo è particolarmente vero nel caso di un troncamento di una sequenza
+                    di catture. In questo caso, infatti, la valutazione della posizione è
+                    falsata dal temporaneo sbilanciamento del materiale tra le due parti che
+                    si ha fino a che tutta la sequenza di cattura non è completata. Dopo aver
+                    analizzato l'albero alla profondità voluta, quindi, è opportuno
+                    continuare la ricerca per i rami corrispondenti a delle catture fino a che
+                    tutte le catture sono terminate (quiescenza) o fino ad un secondo livello
+                    massimo di ricerca.
+                </p>
+                <p>
+                    Un modo per realizzare questa ricerca &quot;ridotta&quot; può essere
+                    quello di modificare la generazione delle mosse, salvando nello stack solo
+                    quelle corrispondenti a delle catture (eventualmente con anche promozioni,
+                    uscita da posizioni di scacco, ...) e proseguendo poi la ricerca con gli
+                    algoritmi convenzionali.
+                </p>
+                <h2>L'esecuzione del programma</h2>
+                <p>
+                    Analizzando il file di log per l'apertura del programma si hanno le
+                    seguenti mosse:
+                </p>
+                <p class="listato">
+                    LaMoSca v0.10 Log File - Livelli=4<br>
+                    <br>
+                    L=1, A=-2147483647, B=2147483647:<br>
+                    L=2, A=-2147483647, B=2147483647:<br>
+                    L=3, A=-2147483647, B=2147483647:<br>
+                    L=4, A=-2147483647, B=2147483647: L4a8b8=1 L4g8f6=9 L4g8h6=4 L4b7b6=3<br>
+                    L=5, A=-2147483647, B=-9: L5a4b5=103 //Cut Risultato L5: T=1,
+                    A=-2147483647, B=-9<br>
+                    L4b7b5=9 L4c7c6=4 L4c7c5=7 L4d7d6=9 L4d7d5=13 L4e7e6=9 L4e7e5=13 L4f7f6=4
+                    L4f7f5=7 L4g7g6=3 L4g7g5=5 L4h7h6=2 L4h7h5=3 L4a6b8=-2 L4a6c5=6 L4a6b4=1<br>
+                    Risultato L4: T=1, A=13, B=2147483647
+                </p>
+                <p>
+                    Si vede come, in corrispondenza di una cattura, l'analisi venga
+                    proseguita a livelli di profondità maggiore.
+                </p>
+            </td>
+        </tr>
+    </table>
+    <table border="0" cellpadding="10" cellspacing="0" width="100%">
+        <tr>
+            <td width="60%">
+                <h2>Download</h2>
+                <p><a href="LaMoSca10.zip">LaMoSca10.zip (9.06 k)</a></p>
+                <h2>Da completare</h2>
+                <ul>
+                    <li>generazione di arrocco, promozioni, catture en-passant;</li>
+                    <li>controllo di situazioni di patta;</li>
+                </ul>
+                <h2>Da fare</h2>
+                <ul>
+                    <li>gestione del tempo;</li>
+                    <li>efficienza.</li>
+                </ul>
+            </td>
+            <td valign="top" width="40%" bgcolor="#C0C0C0">
+                <h2>Link</h2>
+                <ul>
+                    <li><a href="http://www.gamedev.net/page/resources/_/technical/artificial-intelligence/chess-programming-part-v-advanced-search-r1197">Chess Programming</a></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <table border="0" cellpadding="10" cellspacing="0" width="100%">
+        <tr>
+            <td width="33%"><a href="history.html" class="pulsante">Indietro</a></td>
+            <td align="center" width="34%"><a href="index.html" class="pulsante">Indice</a></td>
+            <td align="right" width="33%"><a href="ambiente.html" class="pulsante">Avanti</a></td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
