@@ -1,0 +1,256 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="it">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="Configurazione dell'ambiente moderno di sviluppo per LaMoSca: compilazione C a 64-bit e interfacciamento con Arena Chess GUI">
+    <meta name="keywords" content="LaMoSca, scacchi, chess engine, Arena Chess, WinBoard, GUI, compilazione, C, Visual Studio, MSVC, x64, GitHub">
+    <meta name="ProgId" content="FrontPage.Editor.Document">
+    <meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+    <title>LaMoSca: Configurazione dell'Ambiente e GUI Arena</title>
+    <style type="text/css">
+        <!--
+        h1 {
+            font-family: Verdana, sans-serif
+        }
+
+        h2 {
+            font-family: Verdana, sans-serif
+        }
+
+        h3 {
+            font-family: Verdana, sans-serif
+        }
+
+        a {
+            color: #000080
+        }
+
+        ul {
+            list-style-type: square
+        }
+
+        hr {
+            color: #000000;
+            background-color: #ffffff
+        }
+
+        .titolo {
+            color: #FFFFFF;
+            background-color: #000000
+        }
+
+        .listato {
+            font-family: Consolas, "Courier New", Courier, monospace;
+            font-size: 10pt;
+            background-color: #f4f4f4;
+            padding: 8px;
+            border: 1px solid #cccccc;
+        }
+
+        .box-info {
+            background-color: #f0f7ff;
+            border-left: 4px solid #0056b3;
+            padding: 10px 15px;
+            margin: 15px 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .pulsante {
+            font-family: Verdana, sans-serif;
+            font-size: 14pt;
+            text-decoration: none;
+            color: #000000;
+            background-color: #ffffff;
+            font-weight: bold
+        }
+
+        .img-screenshot {
+            border: 1px solid #666666;
+            box-shadow: 2px 2px 6px #aaaaaa;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            max-width: 95%;
+            height: auto;
+        }
+
+        body {
+            color: #000000;
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin-left: 0pt;
+            margin-right: 0pt;
+            margin-top: 0pt
+        }
+        -->
+    </style>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MPWL86');</script>
+    <!-- End Google Tag Manager -->
+
+    <script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6683583463955171"></script>
+</head>
+
+<body>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MPWL86"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Intestazione -->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td width="120" bgcolor="#000000"><a href="index.html"><img src="lamosca.jpg" border="0" alt="Indice" width="120" height="120"></a></td>
+            <td bgcolor="#000000">
+                <h1 class="titolo">LaMoSca</h1>
+                <h2 class="titolo">Ambiente di Sviluppo Moderno e Interfaccia Grafica</h2>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Corpo Pagina -->
+    <table border="0" cellpadding="10" cellspacing="0" width="100%">
+        <tr>
+            <td>
+                <center>
+                    <ins class="adsbygoogle" data-ad-client="ca-pub-6683583463955171" data-ad-slot="2544974048" style="display:block;width:100%;max-width:970px;height:90px;margin:0 auto"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                </center>
+
+                <h2>Il Rilancio del Progetto (2026+)</h2>
+                <p>
+                    A distanza di oltre vent'anni dalla prima versione didattica (2001-2002), il progetto <b>LaMoSca</b>
+                    viene ripreso e traghettato nell'ecosistema moderno del <i>chess programming</i>.
+                </p>
+                <div class="box-info">
+                    <b>Repository Ufficiale su GitHub:</b><br>
+                    Tutto il codice sorgente, la documentazione e gli script sono disponibili pubblicamente all'indirizzo:<br>
+                    <a href="https://github.com/pieva/lamosca" target="_blank"><b>https://github.com/pieva/lamosca</b></a>
+                </div>
+
+                <hr>
+
+                <h2>1. Compilazione Locale a 64-bit</h2>
+                <p>
+                    I sorgenti C originali (versione 0.10) sono stati resi conformi agli standard a 64-bit ed è stato predisposto
+                    uno script automatico di build per l'ambiente <b>Microsoft Visual C++ (MSVC)</b>.
+                </p>
+                <p>
+                    Per compilare il motore direttamente dal codice sorgente, è sufficiente lanciare dal prompt dei comandi o da PowerShell:
+                </p>
+                <pre class="listato">
+build.bat
+                </pre>
+                <p>
+                    Lo script rileva automaticamente l'installazione di Visual Studio (es. Visual Studio Community) tramite <code>vswhere</code>,
+                    configura le variabili d'ambiente a 64-bit (<code>vcvars64.bat</code>) e genera l'eseguibile ottimizzato:
+                </p>
+                <pre class="listato">
+bin\LaMoSca.exe (Eseguibile nativo x64, ~45 KB)
+                </pre>
+
+                <hr>
+
+                <h2>2. Interfacciare LaMoSca con una GUI Grafica: Arena Chess</h2>
+                <p>
+                    Poiché la versione 0.10 implementa il protocollo di comunicazione standard <b>WinBoard / XBoard</b>,
+                    è possibile vederlo giocare immediatamente su una scacchiera grafica professionale utilizzando <b>Arena Chess GUI</b>.
+                </p>
+
+                <h3>Passo 1: Download di Arena Chess</h3>
+                <p>
+                    Sul sito ufficiale <a href="http://www.playwitharena.de/" target="_blank">playwitharena.de</a> è possibile
+                    scaricare la versione portatile (senza installazione) <b>Arena 3.5.1 ZIP</b> (17 MB):
+                </p>
+                <p>
+                    <img src="img/arena_download.png" alt="Download Arena 3.5.1 ZIP" class="img-screenshot">
+                </p>
+                <p>
+                    Basta estrarre l'archivio compresso in una cartella a piacere ed avviare <code>Arena.exe</code>.
+                </p>
+
+                <h3>Passo 2: Avvio della GUI di Arena</h3>
+                <p>
+                    All'avvio, Arena si presenta con la scacchiera centrale e i pannelli di analisi e orologio:
+                </p>
+                <p>
+                    <img src="img/arena_main.png" alt="Interfaccia Principale di Arena Chess" class="img-screenshot">
+                </p>
+
+                <h3>Passo 3: Installazione del Motore LaMoSca</h3>
+                <p>
+                    Per aggiungere LaMoSca alla lista dei motori di Arena:
+                </p>
+                <ol>
+                    <li>Nel menu principale, selezionare <b>Engines</b> &rarr; <b>Manage...</b> (oppure premere il tasto <b>F11</b>).</li>
+                    <li>Spostarsi sulla scheda <b>Details</b> e cliccare su <b>New</b>.</li>
+                    <li>Selezionare il file eseguibile: <code>...\lamosca\bin\LaMoSca.exe</code>.</li>
+                    <li>Nel menu a tendina <b>Type</b>, impostare il protocollo su <b>Winboard</b>.</li>
+                    <li>I campi <i>Name</i> ("LaMoSca") e <i>Author</i> ("Pietro Valocchi") verranno identificati automaticamente.</li>
+                    <li>Cliccare su <b>Apply</b> e poi su <b>OK</b>.</li>
+                </ol>
+                <p>
+                    <img src="img/arena_lamosca_engine.png" alt="Configurazione Engine LaMoSca in Arena" class="img-screenshot">
+                </p>
+
+                <p>
+                    Ora LaMoSca è registrato e pronto per disputare partite contro di voi o contro altri motori direttamente su Arena!
+                </p>
+
+                <hr>
+
+                <h2>3. Prossimi Passi della Roadmap</h2>
+                <p>
+                    Con l'ambiente di compilazione moderno a 64-bit configurato e la verifica del protocollo WinBoard su Arena,
+                    lo sviluppo proseguirà con i seguenti traguardi:
+                </p>
+                <ul>
+                    <li><b>Supporto UCI (Universal Chess Interface):</b> per compatibilità universale con tutte le GUI moderne (CuteChess, En-Croissant, Lichess bot).</li>
+                    <li><b>Regole complete e Certificazione Perft:</b> arrocco completo, presa <i>en passant</i> e promozioni minori.</li>
+                    <li><b>Transposition Table & Zobrist Hashing:</b> memorizzazione degli stati già esplorati per velocizzare esponenzialmente la ricerca.</li>
+                    <li><b>Time Management:</b> gestione accurata del tempo di riflessione per partita e incremento.</li>
+                </ul>
+
+            </td>
+        </tr>
+    </table>
+
+    <!-- Contatti -->
+    <table border="0" cellpadding="10" cellspacing="0" width="100%">
+        <tr>
+            <td>
+                <h2>Contatti</h2>
+                <p>
+                    Per suggerimenti, discussioni tecniche o per seguire l'evoluzione del progetto,
+                    visitate il repository <a href="https://github.com/pieva/lamosca" target="_blank">GitHub</a> oppure
+                    scrivete all'autore tramite <a href="mailto:pietro_valocchi@yahoo.it">e-mail</a>.
+                </p>
+                <p><big><b>Buon divertimento con LaMoSca!</b></big></p>
+            </td>
+            <td width="120"><img src="moscabianca.jpg" alt="LaMoSca" width="120" height="120"></td>
+        </tr>
+    </table>
+
+    <!-- Navigazione a Piè di Pagina -->
+    <hr>
+    <table border="0" cellpadding="10" cellspacing="0" width="100%">
+        <tr>
+            <td><a href="continua.html" class="pulsante">Indietro</a></td>
+            <td align="right"><a href="index.html" class="pulsante">Indice</a></td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
