@@ -72,31 +72,44 @@ Nel mondo del chess programming:
 
 ```mermaid
 flowchart TD
-    M1["1. Primo Test con Arena Chess (WinBoard)"] --> M2["2. Nuova Toolchain C/C++ a 64-bit"]
-    M2 --> M3["3. Implementazione Protocollo UCI"]
+    M1["✔ 1. Primo Test con Arena Chess (WinBoard) - COMPLETATO"] --> M2["✔ 2. Nuova Toolchain C/C++ a 64-bit - COMPLETATO"]
+    M2 --> M3["🎯 3. Implementazione Protocollo UCI (PROSSIMA SESSIONE)"]
     M3 --> M4["4. Regole Complete al 100% & Test Perft"]
     M4 --> M5["5. Ricerca Moderna (TT + Zobrist + Iterative Deepening)"]
     M5 --> M6["6. Time Management & Move Ordering"]
     M6 --> M7["7. Bitboards & Valutazione Avanzata (PeSTO / NNUE)"]
 ```
 
-### Milestone 1: Verifica immediata con Arena Chess
-- Scaricare ed estrarre **Arena Chess** (es. versione 3.5.1).
-- Installare `bin/LaMoSca.exe` selezionando il protocollo **WinBoard 1 / 2**.
-- Verificare che il motore giochi regolarmente una partita interattiva su scacchiera grafica.
+### ✔ Milestone 1: Verifica immediata con Arena Chess — [COMPLETATA]
+- [x] Scaricato ed estratto **Arena Chess 3.5.1** (versione portable ZIP).
+- [x] Installato `bin/LaMoSca.exe` selezionando il protocollo **WinBoard**.
+- [x] Verificato avvio del motore, identificazione autore e prima partita giocata con successo sulla scacchiera grafica.
 
-### Milestone 2: Modernizzazione dell'ambiente di compilazione
-- Configurare un `Makefile` o `CMakeLists.txt` per compilare il progetto a 64-bit con GCC (MinGW-w64), Clang o MSVC.
-- Risolvere i warning del compilatore per garantire conformità agli standard attuali.
+### ✔ Milestone 2: Modernizzazione dell'ambiente di compilazione — [COMPLETATA]
+- [x] Configurato script automatico a 64-bit con MSVC: [build.bat](file:///c:/Users/pietr/Projects/lamosca/build.bat) e [build.ps1](file:///c:/Users/pietr/Projects/lamosca/build.ps1).
+- [x] Compilazione ed esportazione dell'eseguibile nativo x64 in [bin/LaMoSca.exe](file:///c:/Users/pietr/Projects/lamosca/bin/LaMoSca.exe).
+- [x] Configurato [.gitignore](file:///c:/Users/pietr/Projects/lamosca/.gitignore) per proteggere la build e repository pubblico sincronizzato su GitHub ([pieva/lamosca](https://github.com/pieva/lamosca)).
+- [x] Creata pagina web didattica `ambiente.html` (e `en/environment.html`) con screenshot e favicon, sincronizzata su `valocchi.it/lamosca/` tramite [sync-site.ps1](file:///c:/Users/pietr/Projects/lamosca/sync-site.ps1).
 
-### Milestone 3: Implementazione del Protocollo UCI
-- Rimpiazzare/affiancare la lettura da console con il set di comandi standard UCI:
-  - `uci` -> identifica il motore (`id name LaMoSca`, `id author Pietro Valocchi`) e risponde `uciok`.
-  - `isready` -> risponde `readyok`.
-  - `position [startpos | fen <fen>] [moves <move1> ... <moveN>]` -> imposta lo stato della scacchiera.
-  - `go [depth <x>] [wtime <ms> btime <ms> winc <ms> binc <ms>]` -> avvia il calcolo asincrono o sincrono.
-  - `bestmove <mossa>` -> restituisce la mossa scelta (es. `bestmove e2e4`).
-  - `quit` -> termina l'applicazione pulitamente.
+---
+
+### 🎯 Milestone 3: Implementazione del Protocollo UCI (Cambio di Interfaccia) — [PROSSIMA SESSIONE]
+> **Obiettivo prioritario della nuova sessione:**  
+> Rimpiazzare/affiancare la gestione console/WinBoard legacy con il protocollo moderno **UCI (Universal Chess Interface)**, aprendo LaMoSca alla compatibilità universale con tutte le GUI contemporanee (CuteChess, En-Croissant, Fritz, server di test automatici e bot online).
+
+- [ ] **Parser del protocollo UCI** in input (`stdin` non bloccante / gestione riga per riga):
+  - `uci` &rarr; identifica il motore (`id name LaMoSca v0.11`, `id author Pietro Valocchi`) e risponde `uciok`.
+  - `isready` &rarr; risponde `readyok`.
+  - `ucinewgame` &rarr; resetta la scacchiera e prepara una nuova partita.
+  - `position [startpos | fen <fen>] [moves <m1> ... <mN>]` &rarr; imposta lo stato della scacchiera eseguendo la sequenza di mosse.
+  - `go [depth <x>] [wtime <ms> btime <ms> winc <ms> binc <ms>] [movetime <ms>]` &rarr; avvia il calcolo della mossa migliore.
+  - `stop` &rarr; interrompe immediatamente la ricerca e restituisce la migliore mossa trovata finora.
+  - `bestmove <mossa>` &rarr; emette la mossa scelta (es. `bestmove e2e4`).
+  - `quit` &rarr; termina l'eseguibile pulitamente.
+- [ ] **Output di analisi in tempo reale**:
+  - `info depth <d> score cp <cp> nodes <n> pv <m1> ...` per consentire alla GUI di mostrare le linee di analisi e il punteggio del motore.
+- [ ] **Collaudo finale**:
+  - Test di compatibilità con Arena Chess (selezionando tipo *UCI*) e con `cutechess-cli`.
 
 ### Milestone 4: Regole Complete e Validazione tramite Perft
 - Aggiungere il parsing e l'export del formato **FEN**.
